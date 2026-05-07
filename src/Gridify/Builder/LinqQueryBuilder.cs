@@ -31,7 +31,7 @@ public class LinqQueryBuilder<T> : BaseQueryBuilder<Expression<Func<T, bool>>, T
                   op,
                   gMap.Convertor,
                   true,
-                  gMap.CaseInsensitive ?? value.IsCaseInsensitive);
+                  gMap.CaseInsensitive);
 
                if (conditionExp is not LambdaExpression lambdaExp) return null;
 
