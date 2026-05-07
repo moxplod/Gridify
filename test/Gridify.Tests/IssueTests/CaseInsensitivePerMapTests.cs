@@ -12,7 +12,7 @@ public class CaseInsensitivePerMapTests
       new TestClass { Name = "Bob",   Tags = ["Python", "Django"] },
    };
 
-   // --- string field: caseSensitive=true overrides global CaseInsensitiveFiltering=true ---
+   // --- string field: caseInsensitive=false overrides global CaseInsensitiveFiltering=true ---
 
    [Fact]
    public void AddMap_CaseSensitiveTrue_OnStringField_ShouldNotMatchWrongCase()
@@ -32,7 +32,7 @@ public class CaseInsensitivePerMapTests
       Assert.Single(DataSource.AsQueryable().ApplyFiltering("Name=Alice", mapper).ToList());
    }
 
-   // --- string field: caseSensitive=false overrides global CaseInsensitiveFiltering=false ---
+   // --- string field: caseInsensitive=true overrides global CaseInsensitiveFiltering=false ---
 
    [Fact]
    public void AddMap_CaseSensitiveFalse_OnStringField_ShouldMatchWrongCaseWhenGlobalIsOff()
@@ -43,7 +43,7 @@ public class CaseInsensitivePerMapTests
       Assert.Single(DataSource.AsQueryable().ApplyFiltering("Name=alice", mapper).ToList());
    }
 
-   // --- List<string> field: use the (string, convertor, caseSensitive) overload so CreateExpression
+   // --- List<string> field: use the (string, convertor, caseInsensitive) overload so CreateExpression
    //     auto-wraps the collection with .Select(fc => fc), making IsNestedCollection() true ---
 
    [Fact]
